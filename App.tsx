@@ -10,8 +10,7 @@ export default function App() {
         Mulish_600SemiBold: require("./src/assets/fonts/Mulish-SemiBold.ttf"),
         Mulish_700Bold: require("./src/assets/fonts/Mulish-Bold.ttf"),
     });
-
-    console.log(fontsLoaded)
+    
     if (!fontsLoaded) {
         return <AppLoading style={{ flex: 1 }}/>;
     } else {
