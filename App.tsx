@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
+
+import AppNavigation from "./src/navigation/AppNavigation";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    let [fontsLoaded] = useFonts({
+        Mulish_400Regular: require("./src/assets/fonts/Mulish-Regular.ttf"),
+        Mulish_600SemiBold: require("./src/assets/fonts/Mulish-SemiBold.ttf"),
+        Mulish_700Bold: require("./src/assets/fonts/Mulish-Bold.ttf"),
+    });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    console.log(fontsLoaded)
+    if (!fontsLoaded) {
+        return <AppLoading style={{ flex: 1 }}/>;
+    } else {
+        return <AppNavigation />;
+    }
+}
